@@ -68,7 +68,8 @@ Follow these steps to get the project running locally:
 4. **Access the application:**  
    Open your browser and go to:
    ```
-   http://localhost:4200
+   http://localhost:4200/#form-config
+)
    ```
 
 ---
