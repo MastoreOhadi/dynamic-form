@@ -1,0 +1,41 @@
+{
+  "form": {
+    "name": "signup",
+    "title": "Base Information",
+    "submitLabel": "Register",
+    "fields": [
+      {
+        "name": "identifier",
+        "title": "Mobile number",
+        "description": "Enter your mobile number",
+        "errorMessage": "The entered identifier is not valid",
+        "required": true,
+        "minLength": 3,
+        "maxLength": 40,
+        "type": "text"
+      },
+      {
+        "name": "username",
+        "title": "Username",
+        "description": "Enter your username",
+        "errorMessage": "Username must have lowercase letters between 5-15 characters",
+        "required": true,
+        "regex": "^[a-z0-9]{5,15}$",
+        "minLength": 5,
+        "maxLength": 15,
+        "type": "text"
+      },
+      {
+        "name": "password",
+        "title": "Password",
+        "description": "Enter a strong password",
+        "errorMessage": "Password must include uppercase, lowercase, and special characters",
+        "required": true,
+        "regex": "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^!&*]).{8,20}$",
+        "minLength": 8,
+        "maxLength": 20,
+        "type": "password"
+      }
+    ]
+  }
+}
