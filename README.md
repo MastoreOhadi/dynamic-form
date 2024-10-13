@@ -51,7 +51,7 @@ Follow these steps to get the project running locally:
 
 1. **Clone the project:**
    ```bash
-   git clone https://github.com/username/dynamic-form-app.git
+   git clone https://github.com/MastoreOhadi/dynamic-form.git
    cd dynamic-form-app
    ```
 
