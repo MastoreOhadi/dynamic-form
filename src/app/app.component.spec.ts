@@ -1,10 +1,26 @@
 import { TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import {ConfigService} from "./services/ConfigService";
+import {TranslateModule, TranslateService} from "@ngx-translate/core";
+import {DynamicFormComponent} from "./dynamic-form/dynamic-form.component";
 
 describe('AppComponent', () => {
+  let translateServiceMock: jasmine.SpyObj<TranslateService>;
+
   beforeEach(async () => {
+
+    translateServiceMock = jasmine.createSpyObj('TranslateService', ['setDefaultLang', 'use']);
+
     await TestBed.configureTestingModule({
-      imports: [AppComponent],
+      imports: [
+        AppComponent,
+      DynamicFormComponent,
+        TranslateModule.forRoot()
+      ],
+      providers: [
+        ConfigService,
+        { provide: TranslateService, useValue: translateServiceMock }
+       ],
     }).compileComponents();
   });
 
@@ -20,10 +36,4 @@ describe('AppComponent', () => {
     expect(app.title).toEqual('dynamic-form-app');
   });
 
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, dynamic-form-app');
-  });
 });

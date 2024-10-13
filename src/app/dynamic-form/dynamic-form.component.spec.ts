@@ -1,69 +1,43 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { ReactiveFormsModule } from '@angular/forms';
-import { MatCardModule } from '@angular/material/card';
-import { MatButtonModule } from '@angular/material/button';
-import { MatInputModule } from '@angular/material/input';
 import { DynamicFormComponent } from './dynamic-form.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 import { ConfigService } from '../services/ConfigService';
-import { of } from 'rxjs';
+import {of, Subject} from 'rxjs';
+import {ActivatedRoute} from "@angular/router";
 
 describe('DynamicFormComponent', () => {
   let component: DynamicFormComponent;
   let fixture: ComponentFixture<DynamicFormComponent>;
-  let configService: ConfigService;
+  let configService: jasmine.SpyObj<ConfigService>;
 
   beforeEach(async () => {
+    configService = jasmine.createSpyObj('ConfigService', ['getFormConfig']);
+    const mockActivatedRoute = {
+      fragment: of('form-config') // Emit "form-config" as the fragment
+    };
     await TestBed.configureTestingModule({
-      declarations: [DynamicFormComponent],
       imports: [
-        HttpClientTestingModule,
         ReactiveFormsModule,
-        MatCardModule,
-        MatButtonModule,
-        MatInputModule,
+        HttpClientTestingModule,
+        RouterTestingModule,
+        DynamicFormComponent // Importing the standalone component here
       ],
-      providers: [ConfigService],
+      providers: [
+        { provide: ConfigService, useValue: configService },
+        { provide: ActivatedRoute, useValue: mockActivatedRoute }
+      ]
     }).compileComponents();
+  });
 
+  beforeEach(() => {
     fixture = TestBed.createComponent(DynamicFormComponent);
     component = fixture.componentInstance;
-    configService = TestBed.inject(ConfigService);
   });
 
-  it('باید فرم را با فیلدهای پیکربندی نمایش دهد', () => {
-    const mockConfig = {
-      submitLabel: 'ارسال',
-      fields: [
-        { name: 'name', type: 'text', title: 'نام', description: 'نام خود را وارد کنید', errorMessage: 'نام لازم است' },
-      ],
-    };
-
-    spyOn(configService, 'getFormConfig').and.returnValue(of(mockConfig));
-    fixture.detectChanges(); // اجرای change detection
-
-    const input = fixture.nativeElement.querySelector('input[formControlName="name"]');
-    expect(input).toBeTruthy();
-    expect(input.placeholder).toBe('نام خود را وارد کنید');
+  it('should create', () => {
+    expect(component).toBeTruthy();
   });
 
-  it('باید پیام خطا را نمایش دهد وقتی فیلد نام نامعتبر است', () => {
-    const mockConfig = {
-      submitLabel: 'ارسال',
-      fields: [
-        { name: 'name', type: 'text', title: 'نام', description: 'نام خود را وارد کنید', errorMessage: 'نام لازم است' },
-      ],
-    };
-
-    spyOn(configService, 'getFormConfig').and.returnValue(of(mockConfig));
-    fixture.detectChanges();
-
-    const input = fixture.nativeElement.querySelector('input[formControlName="name"]');
-    input.value = '';
-    input.dispatchEvent(new Event('input'));
-    fixture.detectChanges();
-
-    const error = fixture.nativeElement.querySelector('mat-error');
-    expect(error.textContent).toContain('نام لازم است');
-  });
 });

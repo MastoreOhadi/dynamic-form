@@ -1,4 +1,7 @@
 {
-  "HELLO": "سلام",
-  "WELCOME": "به برنامه ما خوش آمدید"
+  "Base Information" : "اطلاعات پایه",
+  "Mobile number": "شماره موبایل",
+  "Enter your mobile number": "شماره موبایل را وارد کنید",
+  "The entered identifier is not valid": "شماره موبایل نامعتبر است!",
+  "Register": "ثبت"
 }

@@ -1,1 +1,36 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+/*body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;*/
+
+/*  background-image: url('/assets/bg-image.jpg');*/
+
+/*  background-size: cover;*/
+/*  background-position: center;*/
+/*  background-attachment: fixed;*/
+/*}*/
+body {
+  background-image: url('/assets/bg-image.jpg');
+  background-size: cover; /* برای پوشش کامل */
+}
+
+.form-container {
+  background-color: #FFFFFF; /* رنگ پس‌زمینه فرم */
+  border-radius: 8px; /* گرد کردن گوشه‌ها */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* سایه برای عمق بیشتر */
+}
+
+h1, label {
+  color: #005A7C; /* رنگ عنوان‌ها */
+}
+
+input, textarea {
+  border: 1px solid #2E4A3D; /* رنگ مرز ورودی‌ها */
+  border-radius: 4px; /* گرد کردن مرز ورودی‌ها */
+}
+
+button {
+  background-color: #FFA500; /* رنگ دکمه‌ها */
+  color: white; /* رنگ متن دکمه */
+}
+

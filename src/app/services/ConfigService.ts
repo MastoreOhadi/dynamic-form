@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 export class ConfigService {
   constructor(private http: HttpClient) {}
 
-  getConfig(url: string): Observable<any> {
+  getFormConfig(url: string): Observable<any> {
     return this.http.get(url);
   }
 }

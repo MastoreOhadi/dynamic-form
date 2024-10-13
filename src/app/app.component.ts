@@ -27,6 +27,7 @@ export class AppComponent implements OnInit{
     this.translate.use('fa'); // بارگذاری زبان فارسی
   }
   changeLanguage(lang: string) {
+    console.log(lang);
     this.translate.use(lang);
   }
 }

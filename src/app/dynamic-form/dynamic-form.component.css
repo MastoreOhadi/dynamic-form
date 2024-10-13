@@ -1,12 +1,13 @@
 .form-card {
-  max-width: 600px;
-  margin: 2rem auto;
-  padding: 2rem;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-  background-color: white;
+  max-width: 600px;  /* حداکثر عرض کارت */
+  margin: 5rem auto; /* فاصله از بالا و پایین صفحه و مرکز کردن کارت */
+  padding: 2rem; /* فاصله داخلی */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* سایه */
+  border-radius: 8px; /* گرد کردن گوشه‌ها */
+  background-color: white; /* رنگ پس‌زمینه */
 }
 
+/* بقیه استایل‌ها بدون تغییر */
 .form-field {
   margin-bottom: 1.5rem;
 }
@@ -27,4 +28,17 @@ button {
   display: flex;
   justify-content: flex-end;
   margin-top: 1rem;
+}
+.language-selector {
+  margin-bottom: 1rem;
+}
+
+.language-selector button {
+  margin-right: 0.5rem;
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #333;
 }

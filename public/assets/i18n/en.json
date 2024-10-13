@@ -1,4 +1,23 @@
 {
-  "HELLO": "Hello",
-  "WELCOME": "Welcome to our application"
+  "form": {
+    "title": "Base Information",
+    "submitLabel": "Register",
+    "fields": {
+      "identifier": {
+        "title": "Mobile number",
+        "description": "Enter your mobile number",
+        "errorMessage": "The entered identifier is not valid"
+      },
+      "username": {
+        "title": "Username",
+        "description": "Enter your username",
+        "errorMessage": "Username must have lowercase letters between 5-15 characters"
+      },
+      "password": {
+        "title": "Password",
+        "description": "Enter a strong password",
+        "errorMessage": "Password must include uppercase, lowercase, and special characters"
+      }
+    }
+  }
 }

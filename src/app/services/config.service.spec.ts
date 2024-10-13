@@ -23,7 +23,7 @@ describe('ConfigService', () => {
   it('باید فایل config را با موفقیت بارگذاری کند', () => {
     const mockConfig = { submitLabel: 'ارسال', fields: [] };
 
-    service.getFormConfig().subscribe((config) => {
+    service.getFormConfig('/assets/form-config.json').subscribe((config) => {
       expect(config).toEqual(mockConfig);
     });
 
@@ -33,7 +33,7 @@ describe('ConfigService', () => {
   });
 
   it('باید با خطای 404 شکست بخورد', () => {
-    service.getFormConfig().subscribe({
+    service.getFormConfig('/assets/form-config.json').subscribe({
       error: (err) => {
         expect(err.status).toBe(404);
       },

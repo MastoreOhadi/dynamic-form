@@ -1,24 +1,32 @@
-<mat-card class="form-card">
+
+<mat-card class="form-card"  >
+
+  <h2  style="display: flex; justify-content: center; align-items: center;  text-align: center;" >{{ config?.title | translate }}</h2> <!-- نمایش عنوان فرم -->
   <form *ngIf="form" [formGroup]="form" (ngSubmit)="onSubmit()">
     <div *ngFor="let field of config?.fields" class="form-field">
       <mat-form-field appearance="outline" class="full-width">
-        <mat-label>{{ field.title }}</mat-label>
+        <mat-label>{{ field.title | translate }}</mat-label> <!-- استفاده از فیلتر ترجمه -->
         <input
           matInput
           [type]="field.type"
           [formControlName]="field.name"
-          [placeholder]="field.description"
+          [placeholder]="field.description |translate"
         />
         <mat-error *ngIf="form.get(field.name)?.invalid && form.get(field.name)?.touched">
-          {{ field.errorMessage }}
+          {{ field.errorMessage | translate }}
         </mat-error>
       </mat-form-field>
     </div>
 
     <div class="button-container">
       <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">
-        {{ config?.submitLabel }}
+        {{ config?.submitLabel |translate }}
       </button>
+    </div>
+    <div class="language-selector">
+      <button (click)="changeLanguage('en')">English</button>
+      <button (click)="changeLanguage('fa')">فارسی</button>
     </div>
   </form>
 </mat-card>
+
